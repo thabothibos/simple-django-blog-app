@@ -9,12 +9,14 @@
 	<small>By: 
 		{{ post.author.first_name }} 
 		{{ post.author.last_name }} - 
-		<sub>{{ post.post_date }}</sub> - 
-		<a href="{% url 'update_post' post.pk %}">edit</a> - 
-		<a style="color: red;" href="{% url 'delete_post' post.pk %}">delete</a> 
+		<sub>{{ post.post_date }}</sub>  
+		{% if user.is_authenticated %}
+			- <a href="{% url 'update_post' post.pk %}">edit</a> -  
+			<a style="color: red;" href="{% url 'delete_post' post.pk %}">delete</a>
+		{% endif %}
 	</small><br>
 	<hr>
-	{{ post.body }}
+	{{ post.body|slice:"200" }}  <!---Display the first 200 charaters in the blog-->
 
 	<br><br><a class="btn btn-secondary "href="{% url 'home' %}" >Back</a>
 {% endblock %}
