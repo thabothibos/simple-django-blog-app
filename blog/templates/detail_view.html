@@ -16,7 +16,7 @@
 		{% endif %}
 	</small><br>
 	<hr>
-	{{ post.body|slice:"200" }}  <!---Display the first 200 charaters in the blog-->
+	{{ post.body }}  <!---Display the first 200 charaters in the blog-->
 
 	<br><br><a class="btn btn-secondary "href="{% url 'home' %}" >Back</a>
 {% endblock %}
