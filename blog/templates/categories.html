@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 {% if category_posts %}
     <h1>{{ cats }} </h1>
 
@@ -23,6 +24,7 @@
 {% else %}
 	<h3 style="color:red; text-align:center; margin-top:200px;">Sorry this page does not exist..</h3>
 {% endif %}
+{{content}}
 	
 {% endblock %}
 
