@@ -11,12 +11,14 @@
 		 - {{ post.author.first_name }} {{ post.author.last_name }} - <small>{{ post.post_date }}</small>
 		 <small>
 			{% if user.is_authenticated %}
-			<a href="{% url 'update_post' post.pk %}">edit</a> -  
-			<a style="color: red;" href="{% url 'delete_post' post.pk %}">delete</a>
+				{% if user.id == post.author.id %}
+					<a href="{% url 'update_post' post.pk %}">edit</a> -  
+					<a style="color: red;" href="{% url 'delete_post' post.pk %}">delete</a>
+				{% endif %}
 			{% endif %} 
 		 </small>
 		 <br>
-		{{ post.body|slice:":150"|safe }}...
+		{{ post.body|slice:":150"|safe }}... <!---Display the first 150 charaters in the blog-->
 		</li>
 	{% endfor %}
 	</ul>

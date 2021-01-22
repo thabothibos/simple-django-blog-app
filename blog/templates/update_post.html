@@ -3,19 +3,22 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-	<h1>Update Post...</h1>
-	
-	<div class="form-group">
-		<form method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<br>
-			<button class="btn btn-secondary">Update</button>
-		</form>
-	</div>
+	{% if user.id == post.author.id %}
+		<h1>Update Post...</h1>
+		
+		<div class="form-group">
+			<form method="POST">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<br>
+				<button class="btn btn-secondary">Update</button>
+			</form>
+		</div>
+	{% else %}
+		<h3 style=" margin-top: 100px; text-align: center; color: red;"> Access Denied! </h3>
+	{% endif %}
 {% else %}
 	<h3 style=" margin-top: 100px; text-align: center; color: red;"> Access Denied! </h3>
-
 {% endif %}
 	
 {% endblock %}
