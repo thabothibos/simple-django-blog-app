@@ -42,6 +42,7 @@ class AddPostView(CreateView):
 	form_class = PostForm
 	template_name = 'add_post.html'
 	#fields = '__all__'
+	success_url = reverse_lazy('article')
 	
 class AddCategoryView(CreateView):
 	model = Category
