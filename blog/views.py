@@ -35,7 +35,7 @@ class HomeView(ListView):
 	   
 def CategoryView(request, cats):
 	category_posts = Post.objects.filter(category=cats.replace('-',' ')).order_by('-post_date')
-	cat_menu = Category.objects.all()             # so as to render the category nav-link in this page
+	cat_menu = Category.objects.all()             # so as to render the category nav-link on the page
 	context = {'cats':cats.title().replace('-',' '), 'category_posts':category_posts, 'cat_menu':cat_menu}
 	return render(request, 'categories.html', context)
 	
@@ -65,7 +65,7 @@ class AddPostView(CreateView):
 	form_class = PostForm
 	template_name = 'add_post.html'
 	#fields = '__all__'
-	success_url = reverse_lazy('article')
+	success_url = reverse_lazy('home')
 	
 class AddCategoryView(CreateView):
 	model = Category

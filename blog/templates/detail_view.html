@@ -20,7 +20,7 @@
 	<hr>
 	{{ post.body|safe }}  
 
-	<br><br><a class="btn btn-secondary" href="{% url 'home' %}" >Back</a>
+	<br><br><a class="btn  btn-sm btn-secondary" href="{% url 'home' %}" >Back</a>
 	
 	<hr><br>
 	<form action="{% url 'like_post' post.pk %}" method="POST">
