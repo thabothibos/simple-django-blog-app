@@ -34,7 +34,7 @@
 		{% else %}
 		<small style="color: gray ;"><a href="{% url 'login' %}">Login</a> <small> to like </small>
 		{% endif %}
-		- {{ total_likes }} Likes
+		- {{ total_likes }} Like{{total_likes|pluralize}} 
 	</form>
 {% endblock %}
 

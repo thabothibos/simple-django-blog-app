@@ -18,7 +18,7 @@
 			{% endif %} 
 		 </small>
 		 <br>
-		{{ post.body|slice:":150"|safe }}... <!---Display the first 150 charaters in the blog-->
+		{{ post.snippet|safe }}... <!---Display the first 150 charaters in the blog-->
 		</li>
 	{% endfor %}
 	</ul>
