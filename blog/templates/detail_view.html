@@ -18,6 +18,9 @@
 		{% endif %}
 	</small><br>
 	<hr>
+	{% if post.header_image %}
+		<img src="{{ post.header_image.url }}"><br><br>
+	{% endif %}
 	{{ post.body|safe }}  
 
 	<br><br><a class="btn  btn-sm btn-secondary" href="{% url 'home' %}" >Back</a>
