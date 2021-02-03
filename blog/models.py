@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, date
+from ckeditor.fields import RichTextField
 
 class Category(models.Model):
 	name = models.CharField(max_length=255)
@@ -15,7 +16,8 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
+    body = RichTextField(blank=True, null=True) 
+    #body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     category = models.CharField(max_length=255, default='coding')
     snippet = models.CharField(max_length=255)
