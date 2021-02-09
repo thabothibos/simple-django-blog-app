@@ -23,8 +23,7 @@
 		<img src="{{ post.header_image.url }}" style="max-width: 100%" ><br><br>
 	{% endif %}
 	{{ post.body|safe }}  
-
-	<br><br><a class="btn  btn-sm btn-secondary" href="{% url 'home' %}" >Back</a>
+	<br>
 	
 	<hr><br>
 	<form action="{% url 'like_post' post.pk %}" method="POST">
@@ -38,8 +37,10 @@
 		{% else %}
 		<small style="color: gray ;"><a href="{% url 'login' %}">Login</a> <small> to like </small>
 		{% endif %}
-		- {{ total_likes }} Like{{total_likes|pluralize}} 
-	</form> <br><br>
+		- {{ total_likes }} Like{{total_likes|pluralize}}  <a class="btn  btn-sm btn-secondary" href="{% url 'home' %}" >Back</a>
+	</form>
+	<br>
+	
 	<div class="card mb-3">
 	   <div class="row no-gutters">
 	    <div class="col-md-2">
@@ -83,6 +84,30 @@
 	   </div>
 	</div>
 	
+	<br>
+	<h3>Comments</h3>
+	<hr>
+	{% if not post.comments.all %}
+		<small>No comments Yet..</small><a href="{% url 'add_comment' post.pk %}">Add one</a>
+	{% else %}
+		
+		<a href="{% url 'add_comment' post.pk %}">Add a comment</a>
+		<br><br>
+		{% for comment in post.comments.all %}
+			<strong>
+				<small>
+				{{ comment.name }}
+				{{ comment.date_added }}
+				</small>
+			</strong>
+			<br>
+			{{ comment.body }}
+			<br><br>
+		{% endfor %}
+		<a href="{% url 'add_comment' post.pk %}">Add a comment</a>
+	{% endif %}
 {% endblock %}
-
+sahs.ac.zw
+0712792735
+admin@sahs.ac.zw
 
